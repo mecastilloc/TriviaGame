@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="assets/css/style.css">
+    <title>Triva</title>
+</head>
+
+<!-- <body class="bg-transparent"> -->
+<body>
+<div id="instructions-cont" class="container">
+    <div class="row">
+        <h1 id="titlle"> Trivia Game</h1>
+    </div>
+        <div class="row">
+        <h2 id="instructions"></h2>
+        <p></p>
+    </div>
+    <div class="row">
+        <button id="start-btn">Start</button>
+    </div>
+</div> 
+
+
+<div id="timeUp" class="container">
+    <h1>Time is up</h1>
+</div>
+
+<div id="gameOver" class="container">
+        <h1 id="gameOver-text"> </h1>
+        <p id="correct"></p>
+        <p id="incorrect"></p>
+        <p id="unanswered"></p>
+        <br>
+        <button id="start-btn">New Game</button>
+    </div>
+
+    <div id="good" class="container">
+          
+    </div>
+    <div id="wrong" class="container">
+            
+            <p id="showCorrect"></p>
+    </div>
+
+    <div class="container question-cont">
+<h1 id="question-tag"></h1>
+<h3 id="question"></h3>
+        </div>
+
+    <div class="container answers-cont">
+            <div class="row">
+                    <h1 id="choices-tag"></h2>
+                  </div>
+        <div class="row">
+        	<h2 id="a1"></h2>
+          </div>
+         <div class="row">
+        	<h2 id="a2"></h2>
+          </div>
+         
+           <div class="row">
+        	<h2 id="a3"></h2>
+          </div>
+          
+<div class="row">
+        	<h2 id="a4"></h2>
+          </div>
+         
+
+    </div>
+
+<script src="assets/javascript/app.js"></script>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+</html>
