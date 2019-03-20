@@ -1,164 +1,144 @@
-// display question
-// set interval
-// catch question selected
-// see if it is corerct and ad corrects
-// see if it is incoirrect and add incoirrect
-// see if it is unansered and add unanswered
-// wehn interavl ends show next question
-
 var q1 = {
     q: "cual es mi nombre",
-    a: ["ricardo", "manuel ", "chicho", "lola"],
-    v: ["incorrect", "correct", "incorrect", "incorrect"],
-    a1: "ricardo",
-    v1: "incorrect",
-    a2: "chuchu",
-    v2: "incorrect",
-    a3: "manuel",
-    v3: "correct",
-    a4: "Lola",
-    v4: "incorrect",
+    a: ["manuel", "ricardo", "chicho", "lola"],
+    v: ["correct", "incorrect", "incorrect", "incorrect"],
+
 
 }
 
 var q2 = {
     q: "cual es mi apellido",
     a: ["casas", "chozas", "castillo", "hoetels"],
-    v: ["incorrect", "incorrect", "correct", "incorrect"],
-    v1: "incorrect",
-    a2: "chozas",
-    v2: "incorrect",
-    a3: "castillo",
-    v3: "correct",
-    a4: "hoteles",
-    v4: "incorrect",
+    v: ["incorrect", "correct", "incorrect", "incorrect"],
+    
 
 }
 
 var q3 = {
     q: "cual es mi segundo",
-    a: ["casas", "chozas", "castillo", "hoetels"],
+    a: ["casas", "chozas", "castillo", "casas2"],
     v: ["incorrect", "incorrect", "correct", "incorrect"],
-    v1: "incorrect",
-    a2: "chozas",
-    v2: "incorrect",
-    a3: "castillo",
-    v3: "correct",
-    a4: "hoteles",
-    v4: "incorrect",
+    
 
 }
 
 
 var q4 = {
     q: "cual perro tengo",
-    a: ["casas", "chozas", "castillo", "hoetels"],
-    v: ["incorrect", "incorrect", "correct", "incorrect"],
-    v1: "incorrect",
-    a2: "chozas",
-    v2: "incorrect",
-    a3: "castillo",
-    v3: "correct",
-    a4: "hoteles",
-    v4: "incorrect",
+    a: ["casas", "chozas", "chihuahua", "st bernardo"],
+    v: ["incorrect", "incorrect", "incorrect", "correct"],
+    
 
 }
-// var answerArr = ["a1", "a2", "a3", "a4"];
 var qArr = [q1, q2, q3, q4];
-var counter = 0;
+var count = 0;
 var interval;
-var timeOff;
-var max = qArr.length-1;
 var correct = 0;
 var incorrect = 0;
 var unanswered = 0;
 var choosing = true;
 var gameOver = false;
 var answer;
-
-
-
-
-
-
-// console.log(qArr[1].a[0]);
-// console.log(qArr[1].a[1]);
-// console.log(qArr[1].a[2]);
-// console.log(qArr[1].a[3]);
-// console.log(q1.answerArr[0]);
-// console.log(qArr[0].answerArr[0]);
-// for(var j=0; j<qArr.length; j++){
-
-// for (var h = 0; h < qArr[j].a.length; h++) {
-//     //console.log(j+ " -- "+h);
-//     console.log(qArr[j].a[h]);
-// }
-// }
-
-
+var toInShowQ;
 
 $("#title").text("Trivia Game");
 $("#instructions").html("This trivia game is about sports knowledge. <br> <h2>You wil have 20 seconds select the correct answer. There are 10 questions, at the endo of the trivia your results will be shown</h2>")
+$("#new-btn").hide();
 
 
 $("#start-btn").click(start);
 
 
-
-
 function start(){  
-   showQ();
-   //pause's interval unless last pass
-    interval = setInterval(pause,27000);    
+   showQ(count);
+   
+    interval = setInterval(pause,8000); // interval time sam as the sum of te tiemouts   
 }
 
-
-
-
-function showQ() {
-   
-  answer="";   
+function showQ(x) {
+   choosing=true;
+    answer="";
     $("#instructions-cont").empty();
     $("#good, #wrong").empty();
     $(".question-cont, .answers-cont").show();
     $("#question-tag").text("Question:");
-    $("#question").text(qArr[count].q);
+    $("#question").text(qArr[x].q);
     $("#choices-tag").text("Choices:");
-    $("#a1").text(qArr[count].a[0]);
-    $("#a2").text(qArr[count].a[1]);
-    $("#a3").text(qArr[count].a[2]);
-    $("#a4").text(qArr[count].a[3]);
+    $("#a1").text(qArr[x].a[0]);
+    $("#a2").text(qArr[x].a[1]);
+    $("#a3").text(qArr[x].a[2]);
+    $("#a4").text(qArr[x].a[3]);
+console.log("ans is" + answer);
+console.log("respueste en bd"+ qArr[x].v[0]);
+    toInShowQ= setTimeout(showR,5000);
+    }//end of showQ
+         $("#a1").click(function () {
+            answerChosen(count,0);
+        });
 
-    setTimeout(showR,20000);
+        $("#a2").click(function () {
+            answerChosen(count,1);
+        });
 
-}//end of showQ
+        $("#a3").click(function () {
+            answerChosen(count,2);
+        });
+        $("#a4").click(function () {
+            answerChosen(count,3);
+        });
 
+            function answerChosen(x,vIndex){
+            choosing = false;
+           clearTimeout(toInShowQ);
+             if (qArr[x].v[vIndex] == "correct") {
+                //correct++  
+              answer="correct";
+             }
+            if (qArr[x].v[vIndex] == "incorrect"){
+                //incorrect++
+              
+                                answer="incorrect" ;           
+        }
+        
+         console.log(answer);
+         console.log(correct);
+         console.log(incorrect);
+         showR();
+
+        }
+    
+ 
 function showR(){ 
         console.log("pause"+count);
     if(answer=="correct"){
-        correct++
-        
+       correct++
+        $("#good").html("<h1 >Great! Keep it going</h1>");
+    $(".question-cont, .answers-cont").hide();
     }
     else if(answer=="incorrect"){
         incorrect++
-        
+        $("#wrong").html("<h1 >Wrong! The correct answer was:</h1>");
+        ansCorrect(count);
+    $(".question-cont, .answers-cont").hide();
     }
 
     else if(answer!="correct" && answer!="incorrect"){
           $("#wrong").html("<h1 >Time's Up! The correct answer was:</h1>");
-    $(".question-cont, .answers-cont").hide();
+          ansCorrect(count);
+          $(".question-cont, .answers-cont").hide();
     console.log("pause");
     }
     if(gameOver){
-        setTimeout(showE,7000);
+        setTimeout(showE,3000);
     }
 }
 
 
 function pause() {
+    
+    
     count++; 
-    //setTimeout(showQ, 100);
-    showQ();
+     showQ(count);
      if (count == qArr.length-1) {
         gameOver=true;
         clearInterval(interval);
@@ -168,7 +148,7 @@ function pause() {
 
 
 function showE(){
-   unanswered = qArr.length - correct - incorrect;
+       unanswered = qArr.length - correct - incorrect;
         $(".question-cont").empty();
         $(".answers-cont").empty();
         $("#good, #wrong").empty();
@@ -176,12 +156,26 @@ function showE(){
         $("#correct").text(correct);
         $("#incorrect").text(incorrect);
         $("#unanswered").text(unanswered);
+        $("#new-btn").show();
         
         console.log(correct);
         console.log(incorrect);
         console.log(unanswered);
         
         console.log("gameover");
+    
+}
+
+
+function ansCorrect(x){
+
+for (var h = 0; h < qArr[x].v.length; h++) {
+    
+    if(qArr[x].v[h]=="correct"){
+        var ansCorrect = $("<h2 id='ansCorrect'>");
+        ansCorrect.text(qArr[x].a[h]);
+        $("#wrong").append(ansCorrect);
         
-      
+        }
+    }
 }

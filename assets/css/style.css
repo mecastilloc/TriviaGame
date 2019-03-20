@@ -1,22 +1,39 @@
 html{
-    /* background-image: url("../images/bg.jpg"); */
+    background-image: url("../images/bg.jpg");
     background-color: black;
-    /* -webkit-background-size: cover;
+    -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: cover; */
+    background-size: cover;
+    background-repeat: no-repeat;
     height: 100%;
 }
 
 body{
-background-image: url("../images/bg.jpg");
+/* background-image: url("../images/bg.jpg");
 background-color: black;
 -webkit-background-size: cover;
 -moz-background-size: cover;
 -o-background-size: cover;
-background-size: cover;
+background-size: cover; */
 height: 100%;
 width: 100%;
 color: greenyellow;
 margin: auto;
+display: flex;
+    flex-direction: column;
+    max-width: 720px;
+}
+.outter-div {
+    margin: auto;
+    display: block;
+}
+
+/* .container{
+  
+} */
+
+.btn{
+    text-align: center;
+    margin: auto;
 }

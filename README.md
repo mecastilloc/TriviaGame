@@ -14,3 +14,6 @@ bug not showing last correct or incorrect message is fixed. New timers logic. Ad
 
 commit 4:
 click events added whit a generic function, final stats oparates correctly.
+
+commit 5:
+all functions added, missing real questions and last css details

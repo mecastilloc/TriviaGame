@@ -12,334 +12,88 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <title>Triva</title>
 </head>
 
 <!-- <body class="bg-transparent"> -->
-<body>
-<div id="instructions-cont" class="container">
-    <div class="row">
-        <h1 id="titlle"> Trivia Game</h1>
-    </div>
-        <div class="row">
-        <h2 id="instructions"></h2>
-        <p></p>
-    </div>
-    <div class="row">
-        <button id="start-btn">Start</button>
-    </div>
-</div> 
+
+<body class="bg-transparent">
+    <div class="outter-div">
+        <div class="main">
+            <div id="instructions-cont" class="container">
+                <div class="row">
+                    <h1 id="titlle"> Trivia Game</h1>
+                </div>
+                <div class="row">
+                    <h2 id="instructions"></h2>
+                    <p></p>
+                </div>
+                <div class="row  justify-content-center">
+                    <div class="col-4">
+                        <button id="start-btn">Start</button>
+                    </div>
+                </div>
+            </div>
 
 
 
-<div id="gameOver" class="container">
-        <h1 id="gameOver-text"> </h1>
-        <p id="correct"></p>
-        <p id="incorrect"></p>
-        <p id="unanswered"></p>
-        <br>
-        <button id="start-btn">New Game</button>
-    </div>
+            <div id="gameOver" class="container">
+                <h1 id="gameOver-text"> </h1>
+                <p id="correct"></p>
+                <p id="incorrect"></p>
+                <p id="unanswered"></p>
+                <br>
+                <div class="btn">
+                    <button id="new-btn" onClick="location.href=location.href">New Game</button>
+                </div>
+            </div>
 
-    <div id="good" class="container">
-          
-    </div>
-    <div id="wrong" class="container">
-            
-            <p id="showCorrect"></p>
-    </div>
+            <div id="good" class="container">
 
-    <div class="container question-cont">
-<h1 id="question-tag"></h1>
-<h3 id="question"></h3>
+            </div>
+            <div id="wrong" class="container">
+                <h2 id="AnsCorrect"></h2>
+
+            </div>
+
+            <div class="container question-cont">
+                <div class="row">
+                    <h1 id="question-tag"></h1>
+                </div>
+                <div class="row">
+                    <h3 id="question"></h3>
+                </div>
+            </div>
+            <hr>
+            <div class="container answers-cont">
+                <div class="row">
+                    <h1 id="choices-tag">
+                </div>
+                <div class="row">
+                    <h2 id="a1"></h2>
+                </div>
+                <div class="row">
+                    <h2 id="a2"></h2>
+                </div>
+
+                <div class="row">
+                    <h2 id="a3"></h2>
+                </div>
+
+                <div class="row">
+                    <h2 id="a4"></h2>
+                </div>
+            </div>
         </div>
-
-    <div class="container answers-cont">
-            <div class="row">
-                    <h1 id="choices-tag"></h2>
-                  </div>
-        <div class="row">
-        	<h2 id="a1"></h2>
-          </div>
-         <div class="row">
-        	<h2 id="a2"></h2>
-          </div>
-         
-           <div class="row">
-        	<h2 id="a3"></h2>
-          </div>
-          
-<div class="row">
-        	<h2 id="a4"></h2>
-          </div>
     </div>
-
-<!-- <script src="assets/javascript/app.js"></script> -->
-<script>
-
-var q1 = {
-    q: "cual es mi nombre",
-    a: ["manuel", "ricardo", "chicho", "lola"],
-    v: ["correct", "incorrect", "incorrect", "incorrect"],
-    a1: "ricardo",
-    v1: "incorrect",
-    a2: "chuchu",
-    v2: "incorrect",
-    a3: "manuel",
-    v3: "correct",
-    a4: "Lola",
-    v4: "incorrect",
-
-}
-
-var q2 = {
-    q: "cual es mi apellido",
-    a: ["casas", "chozas", "castillo", "hoetels"],
-    v: ["incorrect", "correct", "incorrect", "incorrect"],
-    v1: "incorrect",
-    a2: "chozas",
-    v2: "incorrect",
-    a3: "castillo",
-    v3: "correct",
-    a4: "hoteles",
-    v4: "incorrect",
-
-}
-
-var q3 = {
-    q: "cual es mi segundo",
-    a: ["casas", "chozas", "castillo", "hoetels"],
-    v: ["incorrect", "incorrect", "correct", "incorrect"],
-    v1: "incorrect",
-    a2: "chozas",
-    v2: "incorrect",
-    a3: "castillo",
-    v3: "correct",
-    a4: "hoteles",
-    v4: "incorrect",
-
-}
-
-
-var q4 = {
-    q: "cual perro tengo",
-    a: ["casas", "chozas", "castillo", "st bernardo"],
-    v: ["incorrect", "incorrect", "incorrect", "correct"],
-    v1: "incorrect",
-    a2: "chozas",
-    v2: "incorrect",
-    a3: "castillo",
-    v3: "correct",
-    a4: "hoteles",
-    v4: "incorrect",
-
-}
-// var answerArr = ["a1", "a2", "a3", "a4"];
-var qArr = [q1, q2, q3, q4];
-var count = 0;
-var interval;
-var correct = 0;
-var incorrect = 0;
-var unanswered = 0;
-var choosing = true;
-var gameOver = false;
-var answer;
-var toInShowQ;
-var j=0;
-
-$("#title").text("Trivia Game");
-$("#instructions").html("This trivia game is about sports knowledge. <br> <h2>You wil have 20 seconds select the correct answer. There are 10 questions, at the endo of the trivia your results will be shown</h2>")
-
-
-$("#start-btn").click(start);
-
-
-
-
-function start(){  
-   showQ(count);
-   //pause's interval unless last pass
-    interval = setInterval(pause,8000);    
-}
-
-
-
-
-function showQ(x) {
-   choosing=true;
-    answer="";
-    $("#instructions-cont").empty();
-    $("#good, #wrong").empty();
-    $(".question-cont, .answers-cont").show();
-    $("#question-tag").text("Question:");
-    $("#question").text(qArr[x].q);
-    $("#choices-tag").text("Choices:");
-    $("#a1").text(qArr[x].a[0]);
-    $("#a2").text(qArr[x].a[1]);
-    $("#a3").text(qArr[x].a[2]);
-    $("#a4").text(qArr[x].a[3]);
-console.log("ans is" + answer);
-console.log("respueste en bd"+ qArr[x].v[0]);
-    toInShowQ= setTimeout(showR,5000);
-    }//end of showQ
-  //if (choosing) {
-
-
-        $("#a1").click(function () {
-            answerChosen(count,0);
-        });
-
-        $("#a2").click(function () {
-            answerChosen(count,1);
-        });
-
-        $("#a3").click(function () {
-            answerChosen(count,2);
-        });
-        $("#a4").click(function () {
-            answerChosen(count,3);
-        });
-
-            function answerChosen(x,vIndex){
-            choosing = false;
-           clearTimeout(toInShowQ);
-             if (qArr[x].v[vIndex] == "correct") {
-                //correct++  
-              answer="correct";
-             }
-            if (qArr[x].v[vIndex] == "incorrect"){
-                //incorrect++
-              
-                                answer="incorrect" ;           
-        }
-        
-         console.log(answer);
-         console.log(correct);
-         console.log(incorrect);
-         showR();
-
-        }
-    
-  //}
-
-    // if (choosing) {
-    //     $("#a2").click(function () {
-    //         choosing = false;
-    //         alert("opcion seleccionada");
-    //         if (qArr[x].v[1] = "correct") {
-    //        }
-    //         else {
-               
-    //         }
-    //         pause();
-
-
-    //     });
-    // }
-    // if (choosing) {
-    //     $("#a3").click(function () {
-    //         choosing = false;
-    //         alert("opcion seleccionada");
-
-    //         //clearInterval(interval);
-    //         if (qArr[x].v[2] = "correct") {
-    //             correct++
-
-    //         }
-    //         else {
-    //             incorrect++
-    //         }
-    //         pause();
-
-
-    //     });
-    // }
-
-    // if (choosing) {
-    //     $("#a4").click(function () {
-    //         choosing = false;
-    //         alert("opcion seleccionada");
-
-    //         //clearInterval(interval);
-    //         if (qArr[x].v[3] = "correct") {
-    //             correct++
-
-    //         }
-    //         else {
-    //             incorrect++
-    //         }
-    //         pause();
-
-
-    //     });
-    // }
-
-
-
-function showR(){ 
-        console.log("pause"+count);
-    if(answer=="correct"){
-       correct++
-        $("#good").html("<h1 >Great! Keep it going</h1>");
-    $(".question-cont, .answers-cont").hide();
-    }
-    else if(answer=="incorrect"){
-        incorrect++
-        $("#wrong").html("<h1 >Wrong! The correct answer was:</h1>");
-    $(".question-cont, .answers-cont").hide();
-    }
-
-    else if(answer!="correct" && answer!="incorrect"){
-          $("#wrong").html("<h1 >Time's Up! The correct answer was:</h1>");
-    $(".question-cont, .answers-cont").hide();
-    console.log("pause");
-    }
-    if(gameOver){
-        setTimeout(showE,3000);
-    }
-}
-
-
-function pause() {
-    
-    
-    count++; 
-    //setTimeout(showQ, 100);
-    showQ(count);
-     if (count == qArr.length-1) {
-        gameOver=true;
-        clearInterval(interval);
-               } 
-               
-}
-
-
-function showE(){
-       unanswered = qArr.length - correct - incorrect;
-        $(".question-cont").empty();
-        $(".answers-cont").empty();
-        $("#good, #wrong").empty();
-        $("#gameOver-text").html("End of The Game. <br> Here are Your Stats");
-        $("#correct").text(correct);
-        $("#incorrect").text(incorrect);
-        $("#unanswered").text(unanswered);
-        
-        console.log(correct);
-        console.log(incorrect);
-        console.log(unanswered);
-        
-        console.log("gameover");
-        
-      
-}
-</script>
+    <script src="assets/javascript/app.js"></script>
 
 
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
@@ -347,4 +101,5 @@ function showE(){
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 </body>
+
 </html>
