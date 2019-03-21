@@ -39,3 +39,6 @@ all functions added, missing real questions and last css details.
 
 commit 7:
 added restart game without reload, fixed bug with timers: cuase... the interval. final css styling.
+
+commit 8:
+timers settings adjusted, instructions revised, css styling

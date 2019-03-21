@@ -70,7 +70,6 @@ var interval;
 var correct = 0;
 var incorrect = 0;
 var unanswered = 0;
-var choosing = true;
 var gameOver = false;
 var answer;
 var toInShowQ;
@@ -111,7 +110,7 @@ function showQ(x) {
     $("#a2").text(qArr[x].a[1]);
     $("#a3").text(qArr[x].a[2]);
     $("#a4").text(qArr[x].a[3]);
-    toInShowQ = setTimeout(showR, 3000);
+    toInShowQ = setTimeout(showR, 15000);
 }
 
 
@@ -145,7 +144,7 @@ function answerChosen(x, vIndex) {
 
 function showR() {
     console.log("ShowR" + count);
-    setTimeout(pause, 1000)
+    setTimeout(pause, 4200)
     //debugger;
     if (answer == "correct") {
         correct++
@@ -190,7 +189,7 @@ function showE() {
     $("#gameOver-text").html("End of The Game. <br> Here are Your Stats");
     $("#correct").text("Correct answers: " + correct);
     $("#incorrect").text("Incorrect answers: " + incorrect);
-    $("#unanswered").text("Unanswered Questions" + unanswered);
+    $("#unanswered").text("Unanswered questions: " + unanswered);
     $("#new-btn").css({ display: "initial" });
 
     console.log(correct);
