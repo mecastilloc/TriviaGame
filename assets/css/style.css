@@ -18,7 +18,7 @@ background-color: black;
 background-size: cover; */
 height: 100%;
 width: 100%;
-color: greenyellow;
+color: rgb(255, 94, 0);
 margin: auto;
 display: flex;
     flex-direction: column;
@@ -27,13 +27,68 @@ display: flex;
 .outter-div {
     margin: auto;
     display: block;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
-/* .container{
-  
-} */
 
-.btn{
+.col-btn{
     text-align: center;
     margin: auto;
+    font-weight: bold;
 }
+
+#correct{
+    color:greenyellow;
+    font-weight: bold;
+}
+
+#incorrect{
+    color:red;
+    font-weight: bold;
+}
+
+
+#unanswered{
+    color: cyan;
+    font-weight: bold;
+}
+
+#good{
+    color: yellow;
+}
+
+#wrong{
+    color:red;
+}
+
+#AnsCorrect{
+    color:orangered;
+}
+
+/* #question-tag{
+    color:
+} */
+
+#question{
+    color: orange
+}
+
+/* #choices-tag{
+    color:
+} */
+
+.choices{
+    color: orange
+}
+
+#a1:hover, #a2:hover, #a3:hover, #a4:hover {
+    color: yellowgreen;
+    background: black;
+    border: 1px solid orangered;
+    cursor: pointer;
+}
+.btn{
+    display: none;
+  
+}
+

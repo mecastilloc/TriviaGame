@@ -23,20 +23,18 @@
         <div class="main">
             <div id="instructions-cont" class="container">
                 <div class="row">
-                    <h1 id="titlle"> Trivia Game</h1>
+                    <h1 id="titlle"></h1>
                 </div>
                 <div class="row">
-                    <h2 id="instructions"></h2>
+                    <h3 id="instructions"></h3>
                     <p></p>
                 </div>
                 <div class="row  justify-content-center">
-                    <div class="col-4">
-                        <button id="start-btn">Start</button>
+                    <div class="col col-btn">
+                        <button id="start-btn" type="button" class="btn btn-success">Start</button>
                     </div>
                 </div>
             </div>
-
-
 
             <div id="gameOver" class="container">
                 <h1 id="gameOver-text"> </h1>
@@ -44,52 +42,55 @@
                 <p id="incorrect"></p>
                 <p id="unanswered"></p>
                 <br>
-                <div class="btn">
-                    <button id="new-btn" onClick="location.href=location.href">New Game</button>
+                <div class="row  justify-content-center">
+                    <div class="col col-btn">
+                        <button id="new-btn" type="button" class="btn btn-danger">Try Again</button>
+                    </div>
                 </div>
             </div>
 
-            <div id="good" class="container">
+            <div id="good" class="container"></div>
 
-            </div>
             <div id="wrong" class="container">
                 <h2 id="AnsCorrect"></h2>
-
             </div>
 
             <div class="container question-cont">
                 <div class="row">
                     <h1 id="question-tag"></h1>
                 </div>
+
                 <div class="row">
                     <h3 id="question"></h3>
                 </div>
             </div>
-            <hr>
+            <br>
             <div class="container answers-cont">
                 <div class="row">
                     <h1 id="choices-tag">
                 </div>
-                <div class="row">
+
+                <div class="row choices">
                     <h2 id="a1"></h2>
                 </div>
-                <div class="row">
+
+                <div class="row choices">
                     <h2 id="a2"></h2>
                 </div>
 
-                <div class="row">
+                <div class="row choices">
                     <h2 id="a3"></h2>
                 </div>
 
-                <div class="row">
+                <div class="row choices">
                     <h2 id="a4"></h2>
                 </div>
             </div>
+
         </div>
     </div>
+
     <script src="assets/javascript/app.js"></script>
-
-
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
