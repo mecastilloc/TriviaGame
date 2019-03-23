@@ -75,7 +75,7 @@ var answer;
 var toInShowQ;
 
 $("#title").text("Trivia Game");
-$("#instructions").html("This trivia game is about Formula One &#8482 knowledge. <br> <h3>You wil have about 15 seconds to select your answer. There are 10 questions, at the end of the trivia your results will be shown.</h2>")
+$("#instructions").html("This trivia game is about Formula One &#8482 knowledge. <br> <h3>You will have about 15 seconds to select your answer. There are 10 questions, at the end of the trivia your results will be shown.</h2>")
 $("#start-btn").css({ display: "initial" });
 
 $("#start-btn").click(start);
