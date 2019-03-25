@@ -63,7 +63,7 @@ var q10 = {
     v: ["incorrect", "incorrect", "incorrect", "correct"],
 }
 
-
+var countDown;
 var qArr = [q1, q2, q3, q4, q5, q6, q7, q8, q9, q10];
 var count = 0;
 var interval;
@@ -73,6 +73,10 @@ var unanswered = 0;
 var gameOver = false;
 var answer;
 var toInShowQ;
+var timeLeft;
+$(document).ready();
+
+console.log("ready!");
 
 $("#title").text("Trivia Game");
 $("#instructions").html("This trivia game is about Formula One &#8482 knowledge. <br> <h3>You will have about 15 seconds to select your answer. There are 10 questions, at the end of the trivia your results will be shown.</h2>")
@@ -83,6 +87,7 @@ $("#new-btn").click(start);
 
 
 function start() {
+    timer(15);
     count = 0;
     interval;
     correct = 0;
@@ -100,9 +105,12 @@ function start() {
 function showQ(x) {
     console.log("counter es " + count);
     answer = "";
+
     $("#instructions-cont").empty();
     $("#good, #wrong").empty();
     $(".question-cont, .answers-cont").show();
+    $("#countdown-sec").html(timeleft);
+    $("#countdown-txt").html(" seconds remaining");
     $("#question-tag").text("Question:");
     $("#question").text(qArr[x].q);
     $("#choices-tag").text("Choices:");
@@ -110,7 +118,6 @@ function showQ(x) {
     $("#a2").text(qArr[x].a[1]);
     $("#a3").text(qArr[x].a[2]);
     $("#a4").text(qArr[x].a[3]);
-    toInShowQ = setTimeout(showR, 15000);
 }
 
 
@@ -131,7 +138,8 @@ $("#a4").click(function () {
 
 
 function answerChosen(x, vIndex) {
-    clearTimeout(toInShowQ);
+    $("#countdown").empty();
+    clearInterval(countDown);
     if (qArr[x].v[vIndex] == "correct") {
         answer = "correct";
     }
@@ -143,24 +151,25 @@ function answerChosen(x, vIndex) {
 
 
 function showR() {
+    $("#countdown").empty();
     console.log("ShowR" + count);
-    setTimeout(pause, 4200)
+    setTimeout(pause, 4000)
     //debugger;
     if (answer == "correct") {
         correct++
-        $("#good").html("<h1 >Great! Keep it going</h1>");
+        $("#good").html("<h1 class='good'>Great! Keep it going</h1>");
         $(".question-cont, .answers-cont").hide();
         console.log("pause" + count);
     }
     else if (answer == "incorrect") {
         incorrect++
-        $("#wrong").html("<h1 >Wrong! The correct answer was:</h1>");
+        $("#wrong").html("<h1 class='wrong'>Wrong! The correct answer was:</h1>");
         ansCorrect(count);
         $(".question-cont, .answers-cont").hide();
         console.log("pause" + count);
     }
     else if (answer != "correct" && answer != "incorrect") {
-        $("#wrong").html("<h1 >Time's Up! The correct answer was:</h1>");
+        $("#wrong").html("<h1 class='wrong'>Time's Up! The correct answer was:</h1>");
         ansCorrect(count);
         $(".question-cont, .answers-cont").hide();
         console.log("pause" + count);
@@ -175,6 +184,7 @@ function pause() {
     }
     if (!gameOver) {
         count++;
+        timer(15);
         showQ(count);
     }
 }
@@ -205,7 +215,19 @@ function ansCorrect(x) {
             var ansCorrect = $("<h2 id='ansCorrect'>");
             ansCorrect.text(qArr[x].a[h]);
             $("#wrong").append(ansCorrect);
-
         }
     }
 }
+
+
+function timer(x) {
+    timeleft = x;
+    countDown = setInterval(function () {
+        timeleft--;
+        $("#countdown-sec").html(timeleft);
+                if (timeleft == 0) {
+            clearInterval(countDown);
+            setTimeout(showR, 1000);
+        }
+    }, 1000);
+} 

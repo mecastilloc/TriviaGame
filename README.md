@@ -17,7 +17,7 @@ week 5 homework Trivia Game
 
 * On the final screen, shows the number of correct answers, incorrect answers, and an option to restart the game (without reloading the page).
 
-
+### `Commit History`
 
 commit 1:
 Initial commit, repo created
@@ -42,3 +42,12 @@ added restart game without reload, fixed bug with timers: cuase... the interval.
 
 commit 8:
 timers settings adjusted, instructions revised, css styling
+
+commit 9:
+typo fixed
+
+commit 10:
+update Readme.md, javascript document ready added
+
+comiit 11:
+visual countdown added

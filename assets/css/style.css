@@ -37,6 +37,23 @@ display: flex;
     font-weight: bold;
 }
 
+#countdown-div{
+    text-align: center;
+    
+}
+
+#countdown-sec{
+    text-align: center;
+    min-width: 48px;
+    margin-left: 6px;
+    color: red;
+}
+
+#countdown-txt{
+    text-align: center;
+    color: red;
+   
+}
 #correct{
     color:greenyellow;
     font-size: 18px;
@@ -53,16 +70,19 @@ display: flex;
     font-size: 18px;
 }
 
-#good{
+.good{
     color: yellow;
+    margin-top: 20px;
 }
 
-#wrong{
+.wrong{
     color:red;
+    margin-top: 15px;
 }
 
-#AnsCorrect{
+#ansCorrect{
     color:orangered;
+    margin-bottom: 0;
 }
 
 /* #question-tag{
